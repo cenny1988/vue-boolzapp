@@ -57,7 +57,7 @@
                     <img :src='"img/avatar"+contact.avatar+".jpg"' :alt="contact.nome">
                     <div>
                         <h3>{{contact.nome}}</h3>
-                        <p>tutto fatto...</p>
+                        <p>{{contact.messages[contact.messages.length-1].text}}</p>
                     </div>
                     <span>
                         10/01/2020 15:00:22
