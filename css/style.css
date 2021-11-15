@@ -26,62 +26,89 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     display: flex;
-    /* debug */
-    background-color: #fff;
 }
 #container-left{
     width: 30%;
     border-right: 1px solid #d6d6d6;
     display: flex;
     flex-direction: column;
-    /* debug */
-    background-color: yellow;
+}
+#container-left>div:first-child{
+    background-color: #fafafa;
 }
 
 #container-right{
     width: 70%;
     /* debug */
-    background-color: violet;
+    background-color: #e5ddd5;
 }
 /* classi per head  */
 div.head-chat{
     height: 50px;
-    /* line-height: 50px; */
     background-color: #eaeaea;
     padding: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-div.head-chat>div span{
+div.head-chat>div i{
     display: inline-block;
-    /* debug */
-    background-color: #fff;
+    color: #d6d6d6;
+    margin: 0 .1rem;
+    cursor: pointer;
 }
 div.head-chat h3{
     display: inline-block;
 }
+.user{
+    display: flex;
+    align-items: center;
+}
+img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: .5rem;
+}
 /* sezione sx */
+/* #alert-msg */
 #alert-msg{
     background-color: #8edafc;
+    font-size: .7rem;
 }
 #alert-msg a{
     color: #507485;
 }
-/* #alert-msg */
-.row{
+#alert-msg>span{
+    background-color: #f2fbfe;
+    color: #8edafc;
+    padding: .5rem;
+    border-radius: 50%;
+    margin-right: .5rem;
+}
+
+.row, #alert-msg{
     padding: .2rem 1rem;
     display: flex;
     align-items: center;
     min-height: 3rem;
 }
+.row p{
+    color: #b5b9bb;
+}
 .row>span{
-    margin-right: 10px;
+    color: #b5b9bb;
+    font-size: .6rem;
+    align-self: flex-start;
+    padding-top: .4rem;
 }
 .row>div{
     font-size: .7rem;
+    flex-grow: 2;
+}
+.row.active{
+    background-color: #e9ebeb;
 }
 /* tag input */
 #container-left input{
@@ -97,6 +124,6 @@ div.head-chat h3{
 /* container chat */
 #container-chat{
     flex-grow: 2;
-    background-color: #fff;
+    background-color: #fafafa;
     overflow-y: scroll;
 }
