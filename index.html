@@ -53,7 +53,7 @@
                     </span>
                 </div> -->
 
-                <div v-for="contact, i in contacts" :key="i" class="row">
+                <div v-for="contact, i in contacts" :key="i" class="row" :class="i === 0 ? 'active' : '' ">
                     <img :src='"img/avatar"+contact.avatar+".jpg"' :alt="contact.nome">
                     <div>
                         <h3>{{contact.nome}}</h3>
