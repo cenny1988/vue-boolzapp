@@ -42,10 +42,21 @@
 
             <!-- container con chat gia avviate -->
             <div id="container-chat">
-                <div class="row active">
+                <!-- <div class="row active">
                     <img src="img/avatar_2.jpg" alt="avatar-user">
                     <div>
                         <h3>Michele</h3>
+                        <p>tutto fatto...</p>
+                    </div>
+                    <span>
+                        10/01/2020 15:00:22
+                    </span>
+                </div> -->
+
+                <div v-for="contact, i in contacts" :key="i" class="row">
+                    <img :src='"img/avatar"+contact.avatar+".jpg"' :alt="contact.nome">
+                    <div>
+                        <h3>{{contact.nome}}</h3>
                         <p>tutto fatto...</p>
                     </div>
                     <span>
@@ -94,7 +105,7 @@
         </div>
     </div>
     
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

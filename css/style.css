@@ -52,9 +52,7 @@ div.head-chat, footer{
     align-items: center;
     justify-content: space-between;
 }
-/* div.head-chat{
-    justify-content: space-between;
-} */
+
 div.head-chat>div i{
     display: inline-block;
     color: #d6d6d6;
