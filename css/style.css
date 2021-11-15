@@ -44,14 +44,17 @@ body{
     background-color: #e5ddd5;
 }
 /* classi per head  */
-div.head-chat{
+div.head-chat, footer{
     height: 50px;
     background-color: #eaeaea;
     padding: 5px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
+/* div.head-chat{
+    justify-content: space-between;
+} */
 div.head-chat>div i{
     display: inline-block;
     color: #d6d6d6;
@@ -126,4 +129,64 @@ img{
     flex-grow: 2;
     background-color: #fafafa;
     overflow-y: scroll;
+}
+
+/* sezione Destra */
+footer>div:nth-child(2){
+    flex-grow: 2;
+}
+footer a{
+    color: #6a7376;
+    cursor: pointer;
+}
+footer i{
+    margin: 0 1rem;
+}
+footer input{
+    width: 100%;
+    padding: 5px;
+}
+
+
+main{
+    height: calc(100% - 100px);
+    padding: 1rem 0;
+}
+.msg{
+    display: flex;
+    margin: .4rem 3rem;
+}
+.msg.user{
+    justify-content: flex-end;
+}
+.msg.contact{
+    justify-content: flex-start;
+}
+main .msg .msg-user, main .msg .msg-contact{
+    padding: .5rem 1rem;
+    flex-basis: auto;
+    border-radius: 5px;
+}
+main .msg .msg-user{
+    background-color: #d5f9ba;
+}
+main .msg .msg-contact{
+    background-color: #fff;
+}
+
+main .msg .msg-user h5, main .msg .msg-contact h5{
+    font-size: 1rem; 
+}
+main .msg .msg-user h5{
+    padding-right: 3rem;
+}
+main .msg .msg-contact span{
+    padding-left: 3rem;
+}
+main .msg .msg-user span, main .msg .msg-contact span{
+    display: block;
+    text-align: end;
+    font-size: .6rem;
+    color: #b5b9bb;
+    margin: 2px 0;
 }
