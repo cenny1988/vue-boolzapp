@@ -97,6 +97,11 @@ img{
 }
 .row p{
     color: #b5b9bb;
+    max-width: 6rem;
+    max-height: 2rem;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
 }
 .row>span{
     color: #b5b9bb;
