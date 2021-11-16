@@ -91,12 +91,15 @@ var app = new Vue(
 
         },
         methods: {
-            selectContact(index){
-                // devo rendere NON visibile tutti i contatti 
+            allContactsNotVisibile(){
                 this.contacts.forEach(element => element.visibile = false);
+            },
+            selectContact(index){
+                this.allContactsNotVisibile();
                 !this.contacts[index].visibile ? this.contacts[index].visibile = true : this.contacts[index].visibile = false;
                 this.contattoSelezionato = index;
             }
         }
     }
 );
+
