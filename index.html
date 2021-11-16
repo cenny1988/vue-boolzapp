@@ -20,7 +20,7 @@
                 <div class="head-chat">
                     <div class="user">
                         <img src="img/avatar_io.jpg" alt="avatar-user">
-                        <h3>nome utente</h3>
+                        <h3>Gennaro</h3>
                     </div>
                     <div class="settings">
                         <a href="#"><i class="fas fa-circle-notch"></i></a>
@@ -67,7 +67,7 @@
                     <img src="img/avatar_io.jpg" alt="Gennaro">
                     <div>
                         <h3>Gennaro</h3>
-                        <p>Ultimo accesso oggi alle </p>
+                        <p>Ultimo accesso oggi alle... </p>
                     </div>
                 </div>
                 <div class="settings">
@@ -103,7 +103,7 @@
             <!-- footer -->
             <footer>
                 <div><a href="#"><i class="far fa-smile"></i></a></div>
-                <div><a href="#"><input type="text" placeholder="Scrivi un messaggio"></a></div>
+                <div><input :class="contattoSelezionato === null ? 'disable' : '' " v-model="newMsg" @keyup.enter="addNewMsg" type="text" placeholder="Scrivi un messaggio"></div>
                 <div><a href="#"><i class="fas fa-microphone"></i></a></div>
             </footer>
         </div>

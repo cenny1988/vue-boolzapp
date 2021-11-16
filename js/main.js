@@ -2,6 +2,7 @@ var app = new Vue(
     {
         el: '#container-app',
         data: {
+            newMsg: '',
             contattoSelezionato: null,
             contacts:[
                 {
@@ -98,6 +99,15 @@ var app = new Vue(
                 this.allContactsNotVisibile();
                 !this.contacts[index].visibile ? this.contacts[index].visibile = true : this.contacts[index].visibile = false;
                 this.contattoSelezionato = index;
+            },
+            addNewMsg(){
+                let i = this.contattoSelezionato;
+                this.contacts[i].messages.push({
+                    date: '16/11/2021',
+                    text: this.newMsg,
+                    status: 'sent'
+                });
+                this.newMsg = '';
             }
         }
     }
