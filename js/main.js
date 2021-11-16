@@ -2,11 +2,12 @@ var app = new Vue(
     {
         el: '#container-app',
         data: {
+            contattoSelezionato: null,
             contacts:[
                 {
                     nome: 'Michele',
                     avatar:'_1',
-                    visibile: true,
+                    visibile: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -28,7 +29,7 @@ var app = new Vue(
                 {
                     nome: 'Fabio',
                     avatar:'_2',
-                    visibile: true,
+                    visibile: false,
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -50,7 +51,7 @@ var app = new Vue(
                 {
                     nome: 'Samuele',
                     avatar:'_3',
-                    visibile: true,
+                    visibile: false,
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -72,7 +73,7 @@ var app = new Vue(
                 {
                     nome: 'Luisa',
                     avatar:'_4',
-                    visibile: true,
+                    visibile: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -89,9 +90,22 @@ var app = new Vue(
             ]
 
         },
-        medthods: {
-            prova(){
-                console.log(this.contacts.name);
+        methods: {
+            selectContact(index){
+                // console.log(this.contacts[index].nome);
+                if(!this.contacts[index].visibile){
+                    this.contacts[index].visibile = true;
+                    contattoSelezionato = index;
+                    console.log(contattoSelezionato);
+                }else {
+                    this.contacts[index].visibile = false;
+                    contattoSelezionato = null;
+                    console.log(contattoSelezionato);
+                }
+                // !this.contacts[index].visibile ? this.contacts[index].visibile = true : this.contacts[index].visibile = false;
+                // contattoSelezionato = index;
+                // quando clicco sul nome del contatto visualizzo in pagina la conversazione 
+
             }
         }
     }

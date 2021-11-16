@@ -7,6 +7,7 @@
 body{
     background-color: #dadbd4;
     height: 100vh;
+    font-family: 'Lato', sans-serif;
     /* position: relative; */
 }
 #background-head-overlay{
@@ -116,6 +117,9 @@ img{
 .row.active{
     background-color: #e9ebeb;
 }
+.row:hover:not(.row.active){
+    background-color: #e9ebeb;
+}
 /* tag input */
 #container-left input{
     margin: 5px 0;
@@ -154,39 +158,40 @@ footer input{
 main{
     height: calc(100% - 100px);
     padding: 1rem 0;
+    overflow-y: scroll;
 }
 .msg{
     display: flex;
     margin: .4rem 3rem;
 }
-.msg.user{
+.msg.sent{
     justify-content: flex-end;
 }
-.msg.contact{
+.msg.received{
     justify-content: flex-start;
 }
-main .msg .msg-user, main .msg .msg-contact{
+main .msg .msg-sent, main .msg .msg-received{
     padding: .5rem 1rem;
     flex-basis: auto;
     border-radius: 5px;
 }
-main .msg .msg-user{
+main .msg .msg-sent{
     background-color: #d5f9ba;
 }
-main .msg .msg-contact{
+main .msg .msg-received{
     background-color: #fff;
 }
 
-main .msg .msg-user h5, main .msg .msg-contact h5{
+main .msg .msg-sent h5, main .msg .msg-received h5{
     font-size: 1rem; 
 }
-main .msg .msg-user h5{
+main .msg .msg-sent h5{
     padding-right: 3rem;
 }
-main .msg .msg-contact span{
+main .msg .msg-received span{
     padding-left: 3rem;
 }
-main .msg .msg-user span, main .msg .msg-contact span{
+main .msg .msg-sent span, main .msg .msg-received span{
     display: block;
     text-align: end;
     font-size: .6rem;

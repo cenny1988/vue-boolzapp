@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="css/style.css">
     <title>BoolZapp</title>
 </head>
@@ -53,7 +56,7 @@
                     </span>
                 </div> -->
 
-                <div v-for="contact, i in contacts" :key="i" class="row" :class="i === 0 ? 'active' : '' ">
+                <div @click="selectContact(i)" v-for="contact, i in contacts" :key="i" class="row" :class="contact.visibile ? 'active' : '' ">
                     <img :src='"img/avatar"+contact.avatar+".jpg"' :alt="contact.nome">
                     <div>
                         <h3>{{contact.nome}}</h3>
@@ -81,20 +84,21 @@
                     <a href="#"><i class="fas fa-ellipsis-v"></i></a>
                 </div>
             </div>
-            <!-- main -->
-            <main>
-                <div class="msg user">
-                    <div class="msg-user">
-                        <h5>Hai portato il cane a spasso?</h5>
-                        <span>20/11/2021 17.30.22</span>
+            <!-- main v-for="message, j in contacts[contattoSelezionato].messages" :mykey="j"-->
+            <main v-if="contattoSelezionato === null"></main>
+            <main v-else>
+                <div v-for="message, j in contacts[contattoSelezionato].messages" :mykey="j" class="msg" :class="message.status === 'sent' ? 'sent' : 'received' ">
+                    <div :class="message.status === 'sent' ? 'msg-sent' : 'msg-received' ">
+                        <h5>{{message.text}}</h5>
+                        <span>{{message.date}}</span>
                     </div>
                 </div>
-                <div class="msg contact">
-                    <div class="msg-contact">
+                <!-- <div class="msg received">
+                    <div class="msg-received">
                         <h5>Tutto ok</h5>
                         <span>20/11/2021 17.30.22</span>
                     </div>
-                </div>
+                </div> -->
             </main>
             <!-- footer -->
             <footer>
