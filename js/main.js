@@ -92,20 +92,10 @@ var app = new Vue(
         },
         methods: {
             selectContact(index){
-                // console.log(this.contacts[index].nome);
-                if(!this.contacts[index].visibile){
-                    this.contacts[index].visibile = true;
-                    this.contattoSelezionato = index;
-                    console.log(this.contattoSelezionato);
-                }else {
-                    this.contacts[index].visibile = false;
-                    this.contattoSelezionato = null;
-                    console.log(this.contattoSelezionato);
-                }
-                // !this.contacts[index].visibile ? this.contacts[index].visibile = true : this.contacts[index].visibile = false;
-                // contattoSelezionato = index;
-                // quando clicco sul nome del contatto visualizzo in pagina la conversazione 
-                
+                // devo rendere NON visibile tutti i contatti 
+                this.contacts.forEach(element => element.visibile = false);
+                !this.contacts[index].visibile ? this.contacts[index].visibile = true : this.contacts[index].visibile = false;
+                this.contattoSelezionato = index;
             }
         }
     }
