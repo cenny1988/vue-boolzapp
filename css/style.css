@@ -63,6 +63,9 @@ div.head-chat>div i{
 div.head-chat h3{
     display: inline-block;
 }
+div.head-chat p{
+    font-size: .7rem;
+}
 .user{
     display: flex;
     align-items: center;

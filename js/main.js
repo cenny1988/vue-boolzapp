@@ -95,17 +95,17 @@ var app = new Vue(
                 // console.log(this.contacts[index].nome);
                 if(!this.contacts[index].visibile){
                     this.contacts[index].visibile = true;
-                    contattoSelezionato = index;
-                    console.log(contattoSelezionato);
+                    this.contattoSelezionato = index;
+                    console.log(this.contattoSelezionato);
                 }else {
                     this.contacts[index].visibile = false;
-                    contattoSelezionato = null;
-                    console.log(contattoSelezionato);
+                    this.contattoSelezionato = null;
+                    console.log(this.contattoSelezionato);
                 }
                 // !this.contacts[index].visibile ? this.contacts[index].visibile = true : this.contacts[index].visibile = false;
                 // contattoSelezionato = index;
                 // quando clicco sul nome del contatto visualizzo in pagina la conversazione 
-
+                
             }
         }
     }
