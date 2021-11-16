@@ -100,16 +100,37 @@ var app = new Vue(
                 !this.contacts[index].visibile ? this.contacts[index].visibile = true : this.contacts[index].visibile = false;
                 this.contattoSelezionato = index;
             },
-            addNewMsg(){
+            // sentMsg(msg, stato){
+            //     let i = this.contattoSelezionato;
+            //     this.contacts[i].messages.push({
+            //         date: '16/11/2021',
+            //         text: msg,
+            //         status: stato
+            //     });
+            // },
+            myMsg(){
+                //sentMsg(this.newMsg, 'sent');
                 let i = this.contattoSelezionato;
                 this.contacts[i].messages.push({
                     date: '16/11/2021',
                     text: this.newMsg,
                     status: 'sent'
-                });
+                    })
                 this.newMsg = '';
+                this.contactReply();
+            },
+            contactReply(){
+                setTimeout( ()=> {
+                    let i = this.contattoSelezionato;
+                    this.contacts[i].messages.push({
+                    date: '16/11/2021',
+                    text: 'ok',
+                    status: 'received'
+                    })
+                }, 1000 );
             }
         }
     }
 );
 
+// prova con hooks

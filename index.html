@@ -103,7 +103,7 @@
             <!-- footer -->
             <footer>
                 <div><a href="#"><i class="far fa-smile"></i></a></div>
-                <div><input :class="contattoSelezionato === null ? 'disable' : '' " v-model="newMsg" @keyup.enter="addNewMsg" type="text" placeholder="Scrivi un messaggio"></div>
+                <div><input :class="contattoSelezionato === null ? 'disable' : '' " v-model="newMsg" @keyup.enter="myMsg" type="text" placeholder="Scrivi un messaggio"></div>
                 <div><a href="#"><i class="fas fa-microphone"></i></a></div>
             </footer>
         </div>
