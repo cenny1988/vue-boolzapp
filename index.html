@@ -44,8 +44,8 @@
             </div>
 
             <!-- container con chat gia avviate -->
-            <div v-if="keyInsert === '' " id="container-chat">
-                <div @click="selectContact(i)" v-for="contact, i in contacts" :key="i" class="row" :class="i === contattoSelezionato ? 'active' : 'row' ">
+            <div  id="container-chat">
+                <div v-if="contact.visibile" @click="selectContact(i)" v-for="contact, i in contacts" :key="i" class="row" :class="i === contattoSelezionato ? 'active' : 'row' ">
                     <img :src='"img/avatar"+contact.avatar+".jpg"' :alt="contact.nome">
                     <div>
                         <h3>{{contact.nome}}</h3>
@@ -53,19 +53,6 @@
                     </div>
                     <span>
                         {{contact.messages[contact.messages.length-1].date}}
-                    </span>
-                </div>
-            </div>
-
-            <div v-else id="container-chat">
-                <div @click="selectContact(i)" v-for="chat, i in chatsAttive" :key="i" class="row" :class="i === contattoSelezionato ? 'active' : 'row' ">
-                    <img :src='"img/avatar"+chat.avatar+".jpg"' :alt="chat.nome">
-                    <div>
-                        <h3>{{chat.nome}}</h3>
-                        <p>{{chat.messages[chat.messages.length-1].text}}</p>
-                    </div>
-                    <span>
-                        {{chat.messages[chat.messages.length-1].date}}
                     </span>
                 </div>
             </div>

@@ -2,7 +2,7 @@ var app = new Vue(
     {
         el: '#container-app',
         data: {
-            chatsAttive: [],
+            // chatsAttive: [],
             keyInsert: '',
             newMsg: '',
             contattoSelezionato: null,
@@ -98,6 +98,9 @@ var app = new Vue(
             ]
 
         },
+        mounted: function(){
+            this.setVisibile();     
+        },
         methods: {
             selectContact(index){
                 this.contattoSelezionato = index;
@@ -132,14 +135,25 @@ var app = new Vue(
                 }, 1000 );
             },
             keyFilter(){
+                if(this.keyInsert === ''){
+                    this.setVisibile();
+                } else{
+                    this.contacts.forEach( el=> {
+                        el.nome.includes(this.keyInsert) ? el.visibile = true : el.visibile = false;
+                    })
+                    
+                }
+                /* Metodo alternativo con array clonato NB devo creare v-if nell'HTML (se keyInsert =''.. else v-for su array clonato)
                 const chats = [...this.contacts];
-                //console.log(chats.forEach(el=> console.log(el)));
                 this.chatsAttive = chats.filter( chat=> chat.nome.includes(this.keyInsert));
-                // console.log(this.chatsAttive.forEach(el=> console.log(el.nome)));
                 return this.chatsAttive
+                */
+            },
+            setVisibile(){
+                this.contacts.forEach(contact => {
+                    contact.visibile = true;
+                });
             }
         }
     }
 );
-
-// prova con hooks
