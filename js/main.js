@@ -2,8 +2,15 @@ var app = new Vue(
     {
         el: '#container-app',
         data: {
+            chatsAttive: [],
+            keyInsert: '',
             newMsg: '',
             contattoSelezionato: null,
+            user:{
+                nome: 'Gennaro',
+                avatar: '_io',
+                date: '17/11/2021 15:15:12',
+            },
             contacts:[
                 {
                     nome: 'Michele',
@@ -30,7 +37,7 @@ var app = new Vue(
                 {
                     nome: 'Fabio',
                     avatar:'_2',
-                    visibile: false,
+                    visibile: true,
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -74,7 +81,7 @@ var app = new Vue(
                 {
                     nome: 'Luisa',
                     avatar:'_4',
-                    visibile: false,
+                    visibile: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -92,12 +99,7 @@ var app = new Vue(
 
         },
         methods: {
-            allContactsNotVisibile(){
-                this.contacts.forEach(element => element.visibile = false);
-            },
             selectContact(index){
-                this.allContactsNotVisibile();
-                !this.contacts[index].visibile ? this.contacts[index].visibile = true : this.contacts[index].visibile = false;
                 this.contattoSelezionato = index;
             },
             // sentMsg(msg, stato){
@@ -128,6 +130,13 @@ var app = new Vue(
                     status: 'received'
                     })
                 }, 1000 );
+            },
+            keyFilter(){
+                const chats = [...this.contacts];
+                //console.log(chats.forEach(el=> console.log(el)));
+                this.chatsAttive = chats.filter( chat=> chat.nome.includes(this.keyInsert));
+                // console.log(this.chatsAttive.forEach(el=> console.log(el.nome)));
+                return this.chatsAttive
             }
         }
     }

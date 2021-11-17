@@ -31,7 +31,7 @@ body{
 }
 #container-left{
     width: 30%;
-    min-width: 270px;
+    min-width: 285px;
     border-right: 1px solid #d6d6d6;
     display: flex;
     flex-direction: column;

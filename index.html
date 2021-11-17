@@ -19,8 +19,8 @@
             <div>
                 <div class="head-chat">
                     <div class="user">
-                        <img src="img/avatar_io.jpg" alt="avatar-user">
-                        <h3>Gennaro</h3>
+                        <img :src='"img/avatar"+user.avatar+".jpg"' alt="user.nome">
+                        <h3>{{user.nome}}</h3>
                     </div>
                     <div class="settings">
                         <a href="#"><i class="fas fa-circle-notch"></i></a>
@@ -39,13 +39,13 @@
     
                 <!-- input ricerca contatti -->
                 <div id="search">
-                    <input type="text"  placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" @keyup="keyFilter" v-model="keyInsert" placeholder="Cerca o inizia una nuova chat">
                 </div>
             </div>
 
             <!-- container con chat gia avviate -->
-            <div id="container-chat">
-                <div @click="selectContact(i)" v-for="contact, i in contacts" :key="i" class="row" :class="contact.visibile ? 'active' : '' ">
+            <div v-if="keyInsert === '' " id="container-chat">
+                <div @click="selectContact(i)" v-for="contact, i in contacts" :key="i" class="row" :class="i === contattoSelezionato ? 'active' : 'row' ">
                     <img :src='"img/avatar"+contact.avatar+".jpg"' :alt="contact.nome">
                     <div>
                         <h3>{{contact.nome}}</h3>
@@ -53,6 +53,19 @@
                     </div>
                     <span>
                         {{contact.messages[contact.messages.length-1].date}}
+                    </span>
+                </div>
+            </div>
+
+            <div v-else id="container-chat">
+                <div @click="selectContact(i)" v-for="chat, i in chatsAttive" :key="i" class="row" :class="i === contattoSelezionato ? 'active' : 'row' ">
+                    <img :src='"img/avatar"+chat.avatar+".jpg"' :alt="chat.nome">
+                    <div>
+                        <h3>{{chat.nome}}</h3>
+                        <p>{{chat.messages[chat.messages.length-1].text}}</p>
+                    </div>
+                    <span>
+                        {{chat.messages[chat.messages.length-1].date}}
                     </span>
                 </div>
             </div>
@@ -64,10 +77,10 @@
             <!-- header -->
             <div v-if="contattoSelezionato === null" class="head-chat">
                 <div class="user">
-                    <img src="img/avatar_io.jpg" alt="Gennaro">
+                    <img :src='"img/avatar"+user.avatar+".jpg"' alt="user.nome">
                     <div>
-                        <h3>Gennaro</h3>
-                        <p>Ultimo accesso oggi alle... </p>
+                        <h3>{{user.nome}}</h3>
+                        <p>Ultimo accesso {{user.date}} </p>
                     </div>
                 </div>
                 <div class="settings">
@@ -81,7 +94,7 @@
                     <img :src='"img/avatar"+contacts[contattoSelezionato].avatar+".jpg"' :alt="contacts[contattoSelezionato].nome">
                     <div>
                         <h3>{{contacts[contattoSelezionato].nome}}</h3>
-                        <p>Ultimo accesso oggi alle {{contacts[contattoSelezionato].messages[contacts[contattoSelezionato].messages.length-1].date}}</p>
+                        <p>Ultimo accesso {{contacts[contattoSelezionato].messages[contacts[contattoSelezionato].messages.length-1].date}}</p>
                     </div>
                 </div>
                 <div class="settings">
