@@ -180,6 +180,7 @@ main .msg .msg-sent, main .msg .msg-received{
     padding: .5rem 1rem;
     flex-basis: auto;
     border-radius: 5px;
+    position: relative;
 }
 main .msg .msg-sent{
     background-color: #d5f9ba;
@@ -204,3 +205,39 @@ main .msg .msg-sent span, main .msg .msg-received span{
     color: #b5b9bb;
     margin: 2px 0;
 }
+/* icona per eliminare messaggi */
+main .msg .msg-sent span:last-child, main .msg .msg-received span:last-child{
+    display: none;
+    font-size: .8rem;
+    color: #b5b9bb;
+    margin: 2px 0;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+main .msg .msg-sent:hover span:last-child, main .msg .msg-received:hover span:last-child{
+    display: block;
+    z-index: 5;
+}
+
+.remove-msg{
+    background-color: rgba(151, 159, 160, 0.705);
+    padding: 10px;
+    border-radius: 10px;
+}
+.remove-msg a{
+    display: block;
+    padding: 3px 0;
+    text-decoration: none;
+    color: #fff;
+
+}
+
+main .msg .msg-sent span:last-child i>div.remove-msg, main .msg .msg-received span:last-child i>div.remove-msg{
+    display: none;
+}
+main .msg .msg-sent span:last-child:hover div.remove-msg, main .msg .msg-received span:last-child:hover div.remove-msg{
+    display: block;
+    
+}
+

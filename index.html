@@ -49,11 +49,11 @@
                     <img :src='"img/avatar"+contact.avatar+".jpg"' :alt="contact.nome">
                     <div>
                         <h3>{{contact.nome}}</h3>
-                        <p>{{contact.messages[contact.messages.length-1].text}}</p>
+                        <p v-if="contact.messages.length === 0"></p>
+                        <p v-else>{{contact.messages[contact.messages.length-1].text}}</p>
                     </div>
-                    <span>
-                        {{contact.messages[contact.messages.length-1].date}}
-                    </span>
+                    <span v-if="contact.messages.length === 0"></span>
+                    <span v-else>{{contact.messages[contact.messages.length-1].date}}</span>
                 </div>
             </div>
         </div>
@@ -81,7 +81,8 @@
                     <img :src='"img/avatar"+contacts[contattoSelezionato].avatar+".jpg"' :alt="contacts[contattoSelezionato].nome">
                     <div>
                         <h3>{{contacts[contattoSelezionato].nome}}</h3>
-                        <p>Ultimo accesso {{contacts[contattoSelezionato].messages[contacts[contattoSelezionato].messages.length-1].date}}</p>
+                        <p v-if="contacts[contattoSelezionato].messages.length === 0">Ultimo accesso...</p>
+                        <p v-else>Ultimo accesso {{contacts[contattoSelezionato].messages[contacts[contattoSelezionato].messages.length-1].date}}</p>
                     </div>
                 </div>
                 <div class="settings">
@@ -93,10 +94,19 @@
             <!-- main -->
             <main v-if="contattoSelezionato === null"></main>
             <main v-else>
+                <!-- <div v-if="contacts[contattoSelezionato].messages.length === 0">nessun messaggio</div> -->
                 <div v-for="message, j in contacts[contattoSelezionato].messages" :key="j" class="msg" :class="message.status === 'sent' ? 'sent' : 'received' ">
                     <div :class="message.status === 'sent' ? 'msg-sent' : 'msg-received' ">
                         <h5>{{message.text}}</h5>
                         <span>{{message.date}}</span>
+                        <!-- icona in hover per cancellare mess -->
+                        <span><i class="fas fa-chevron-down">
+                                <div class="remove-msg">
+                                    <a href="#"> info messaggio </a>
+                                    <a @click='removeMsg(j)' href="#"> rimuovi messaggio </a>
+                                </div>
+                            </i>
+                        </span> 
                     </div>
                 </div>
             </main>
@@ -109,6 +119,8 @@
         </div>
     </div>
     
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script src="js/main.js"></script>
 </body>

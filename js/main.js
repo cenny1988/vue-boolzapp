@@ -9,7 +9,7 @@ var app = new Vue(
             user:{
                 nome: 'Gennaro',
                 avatar: '_io',
-                date: '17/11/2021 15:15:12',
+                date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
             },
             contacts:[
                 {
@@ -117,7 +117,7 @@ var app = new Vue(
                 //sentMsg(this.newMsg, 'sent');
                 let i = this.contattoSelezionato;
                 this.contacts[i].messages.push({
-                    date: '16/11/2021',
+                    date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
                     text: this.newMsg,
                     status: 'sent'
                     })
@@ -128,7 +128,7 @@ var app = new Vue(
                 setTimeout( ()=> {
                     let i = this.contattoSelezionato;
                     this.contacts[i].messages.push({
-                    date: '16/11/2021',
+                    date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
                     text: 'ok',
                     status: 'received'
                     })
@@ -153,6 +153,9 @@ var app = new Vue(
                 this.contacts.forEach(contact => {
                     contact.visibile = true;
                 });
+            },
+            removeMsg(index){
+                this.contacts[this.contattoSelezionato].messages.splice(index,1);
             }
         }
     }
