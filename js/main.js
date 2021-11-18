@@ -9,7 +9,7 @@ var app = new Vue(
             user:{
                 nome: 'Gennaro',
                 avatar: '_io',
-                date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
+                date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
             },
             contacts:[
                 {
@@ -98,13 +98,14 @@ var app = new Vue(
             ]
 
         },
-        mounted: function(){
+        mounted(){
             this.setVisibile();     
         },
         methods: {
             selectContact(index){
                 this.contattoSelezionato = index;
             },
+            // chiedere perchè parametrizzando non va'
             // sentMsg(msg, stato){
             //     let i = this.contattoSelezionato;
             //     this.contacts[i].messages.push({
@@ -117,7 +118,7 @@ var app = new Vue(
                 //sentMsg(this.newMsg, 'sent');
                 let i = this.contattoSelezionato;
                 this.contacts[i].messages.push({
-                    date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
+                    date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                     text: this.newMsg,
                     status: 'sent'
                     })
@@ -128,7 +129,7 @@ var app = new Vue(
                 setTimeout( ()=> {
                     let i = this.contattoSelezionato;
                     this.contacts[i].messages.push({
-                    date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
+                    date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                     text: 'ok',
                     status: 'received'
                     })
@@ -141,18 +142,15 @@ var app = new Vue(
                     this.contacts.forEach( el=> {
                         el.nome.includes(this.keyInsert) ? el.visibile = true : el.visibile = false;
                     })
-                    
                 }
-                /* Metodo alternativo con array clonato NB devo creare v-if nell'HTML (se keyInsert =''.. else v-for su array clonato)
+                /* Metodo alternativo con array clonato NB devo creare v-if nell'HTML (se keyInsert = ''.. else v-for su array clonato)
                 const chats = [...this.contacts];
                 this.chatsAttive = chats.filter( chat=> chat.nome.includes(this.keyInsert));
                 return this.chatsAttive
                 */
             },
             setVisibile(){
-                this.contacts.forEach(contact => {
-                    contact.visibile = true;
-                });
+                this.contacts.forEach(contact => contact.visibile = true);
             },
             removeMsg(index){
                 this.contacts[this.contattoSelezionato].messages.splice(index,1);

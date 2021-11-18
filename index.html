@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"> 
+    <!-- css -->
     <link rel="stylesheet" href="css/style.css">
     <title>BoolZapp</title>
 </head>
 <body>
     <div id="background-head-overlay"></div>
     <div id="container-app">
+        <!-- sezione sinistra -->
         <div id="container-left">
-            <!-- header sezione sinistra -->
+            <!-- header sx-->
             <div>
                 <div class="head-chat">
                     <div class="user">
@@ -28,7 +32,7 @@
                         <a href="#"><i class="fas fa-ellipsis-v"></i></a>
                     </div>
                 </div>
-                <!-- main sezione sinistra -->
+                <!-- main sx-->
                 <div id="alert-msg">
                     <span><i class="fas fa-bell-slash"></i></span>
                     <div>
@@ -40,6 +44,7 @@
                 <!-- input ricerca contatti -->
                 <div id="search">
                     <input type="text" @keyup="keyFilter" v-model="keyInsert" placeholder="Cerca o inizia una nuova chat">
+                    <i class="fas fa-search"></i>
                 </div>
             </div>
 
@@ -91,10 +96,10 @@
                     <a href="#"><i class="fas fa-ellipsis-v"></i></a>
                 </div>
             </div>
+
             <!-- main -->
             <main v-if="contattoSelezionato === null"></main>
             <main v-else>
-                <!-- <div v-if="contacts[contattoSelezionato].messages.length === 0">nessun messaggio</div> -->
                 <div v-for="message, j in contacts[contattoSelezionato].messages" :key="j" class="msg" :class="message.status === 'sent' ? 'sent' : 'received' ">
                     <div :class="message.status === 'sent' ? 'msg-sent' : 'msg-received' ">
                         <h5>{{message.text}}</h5>
@@ -119,9 +124,11 @@
         </div>
     </div>
     
+    <!-- libreria dayjs -->
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-    <script>dayjs().format()</script>
+    <!-- vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <!-- main.js -->
     <script src="js/main.js"></script>
 </body>
 </html>
