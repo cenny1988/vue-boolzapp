@@ -140,7 +140,7 @@ var app = new Vue(
                     this.setVisibile();
                 } else{
                     this.contacts.forEach( el=> {
-                        el.nome.includes(this.keyInsert) ? el.visibile = true : el.visibile = false;
+                        el.nome.toLowerCase().includes(this.keyInsert.toLowerCase()) ? el.visibile = true : el.visibile = false;
                     })
                 }
                 /* Metodo alternativo con array clonato NB devo creare v-if nell'HTML (se keyInsert = ''.. else v-for su array clonato)
